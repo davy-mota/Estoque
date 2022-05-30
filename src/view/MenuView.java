@@ -1,5 +1,7 @@
 package view;
 
+import model.Usuario;
+
 import java.util.Scanner;
 
 public class MenuView {
@@ -15,17 +17,19 @@ public class MenuView {
         System.out.println("4-Cadastrar Tipo Cliente");
         System.out.println("5-Cadastrar Cliente");
         System.out.println("6-Cadastrar Produto");
-        System.out.println("0-Sair");
+        System.out.println("9-Sair");
 
         int opcao = entrada.nextInt();
 
         switch (opcao) {
 
             case 1:
-                usuario.menuUsuario();
+                UsuarioView userView = new UsuarioView();
+                userView.menuUsuario();
                 break;
-            case 0:
+            case 9:
                 System.out.println("Saindo...");
+                System.exit(0);
                 break;
 
             default:

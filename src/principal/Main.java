@@ -7,9 +7,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		MenuView menu = new MenuView();
+		LoginView login = new LoginView();
 		
-		menu.menu();
+		login.login();
 
 	}
 

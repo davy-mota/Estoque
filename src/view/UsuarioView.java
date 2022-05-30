@@ -1,14 +1,18 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import controller.UsuarioController;
 import model.Usuario;
 
 public class UsuarioView {
 
     MenuView menu = new MenuView();
     Scanner entrada = new Scanner(System.in);
-    Usuario user = new Usuario();
+
+
+
 
     public void menuUsuario() {
 
@@ -16,7 +20,7 @@ public class UsuarioView {
 
         System.out.println("**************MENU DO USUÁRIO*************");
         System.out.println("1-Cadastrar Usuário");
-        System.out.println("2-Listar Pessoa");
+        System.out.println("2-Listar");
         System.out.println("3-Atualizar");
         System.out.println("4-Deletar");
         System.out.println("5-Voltar Para Menu");
@@ -27,12 +31,16 @@ public class UsuarioView {
 
             case 1:
                 menuCadastro();
-                menuUsuario();
                 break;
 
             case 2:
                 menuListar();
-                menuUsuario();
+                break;
+            case 3:
+                menuAtualizar();
+                break;
+            case 4:
+                menuDeletar();
                 break;
             case 5:
                 menu.menu();
@@ -43,33 +51,70 @@ public class UsuarioView {
                 menuUsuario();
                 break;
         }
-
     }
 
 
     public void menuCadastro() {
 
-
-
+        Usuario user = new Usuario();
 
         System.out.println("**************CADASTRO USUÁRIO*************");
         System.out.println("INFORME O USERNAME: ");
         user.setUsername(entrada.next());
         System.out.println("INFORME O PASSWORD: ");
         user.setPassword(entrada.next());
-        System.out.println("****** CADASTRO REALIZADO!!!******");
 
-        menu.menu();
+        UsuarioController userControl = new UsuarioController();
+        System.out.println(userControl.cadastrar(user));
+        menuUsuario();
+
 
     }
 
     public void menuListar() {
-
-        System.out.println("**************LISTA USUÁRIO*************");
-        System.out.println("O USERNAME: " + user.getUsername());
-        System.out.println("O PASSWORD: " + user.getPassword());
+        UsuarioController usuarioController = new UsuarioController();
+        ArrayList<Usuario> userList = usuarioController.listar();
 
 
+        if(userList.isEmpty()){
+            System.out.println("Não possui usuário cadastrado");
+        }else{
+            System.out.println("**************LISTA USUÁRIO*************\n\n");
+            for (int cont = 0; cont < userList.size(); cont++){
+                System.out.println(userList.get(cont).toString());
+            }
+        }
+        menuUsuario();
     }
 
+    public void menuAtualizar() {
+        Usuario user = new Usuario();
+        System.out.println("**************ATUALIZAR USUÁRIO*************");
+        System.out.println("INFORME O USERNAME: ");
+        user.setUsername(entrada.next());
+        System.out.println("INFORME O PASSWORD: ");
+        user.setPassword(entrada.next());
+
+        UsuarioController usuarioController = new UsuarioController();
+        if (!usuarioController.atualizar(user)) {
+            System.out.println("Usuário não cadastrado");
+        } else {
+            System.out.println("CADASTRO ATUALIZADO!!!");
+        }
+        menuUsuario();
+    }
+    public void menuDeletar() {
+        Usuario user = new Usuario();
+        System.out.println("**************EXCLUIR USUÁRIO*************");
+        System.out.println("INFORME O USERNAME: ");
+        user.setUsername(entrada.next());
+
+        UsuarioController usuarioController = new UsuarioController();
+        if (!usuarioController.deletar(user)) {
+            System.out.println("Usuário não encontrado");
+        } else {
+            System.out.println("CADASTRO EXCLUÍDO!!!");
+        }
+        menuUsuario();
+    }
 }

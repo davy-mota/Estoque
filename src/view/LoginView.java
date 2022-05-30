@@ -19,9 +19,9 @@ public class LoginView {
 		System.out.println("******LOGADO COM SUCESSO!******");
 		
 	
-		UsuarioView menu = new UsuarioView();
+		MenuView menu = new MenuView();
 		
-		menu.menuCadastro();
+		menu.menu();
 	}
 	
 	
