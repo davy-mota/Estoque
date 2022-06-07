@@ -1,6 +1,7 @@
 package view;
 
 import model.Usuario;
+import view.UsuarioView;
 
 import java.util.Scanner;
 

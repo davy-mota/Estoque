@@ -15,7 +15,8 @@ public class TipoPessoa {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	
 
+	public void setId(int id) {
+		this.id = id;
+	}
 }

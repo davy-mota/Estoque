@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class Produto {
 	
 	private int codigo;
@@ -9,10 +7,27 @@ public class Produto {
 	private String marca;
 	private float precoCompra;
 	private float precoVenda;
-	private Date dataValidade;
-	private int tipoProduto;
-	private String cor;
-	private int unidadeMedidaid;
+	private int tipoproduto;
+	private int unidadeMedida;
+
+	public int getTipoproduto() {
+		return tipoproduto;
+	}
+	public void setTipoproduto(int tipoproduto) {
+		this.tipoproduto = tipoproduto;
+	}
+	public int getUnidadeMedida() {
+		return unidadeMedida;
+	}
+	public void setUnidadeMedida(int unidadeMedida) {
+		this.unidadeMedida = unidadeMedida;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	public int getCodigo() {
 		return codigo;
 	}
